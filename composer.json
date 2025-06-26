@@ -1,0 +1,57 @@
+{
+    "name": "emadsoliman/laravel-trait-controller",
+    "description": "A Laravel package that provides reusable controller traits for common CRUD operations with advanced filtering, soft deletes, caching, and validation.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Emad Soliman",
+            "email": "emadsoliman@example.com"
+        }
+    ],
+    "keywords": [
+        "laravel",
+        "traits",
+        "controller",
+        "crud",
+        "api",
+        "rest",
+        "filtering",
+        "validation",
+        "soft-delete",
+        "caching"
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0|^11.0",
+        "illuminate/http": "^10.0|^11.0",
+        "illuminate/database": "^10.0|^11.0",
+        "illuminate/validation": "^10.0|^11.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "orchestra/testbench": "^8.0|^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "EmadSoliman\\LaravelTraitController\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EmadSoliman\\LaravelTraitController\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EmadSoliman\\LaravelTraitController\\LaravelTraitControllerServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

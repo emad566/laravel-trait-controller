@@ -147,7 +147,7 @@ public function index(Request $request)
 
 ## Available Traits
 
-### IndexTrait
+### ListingTrait
 
 Provides listing/pagination functionality with advanced filtering.
 
@@ -171,42 +171,42 @@ Provides listing/pagination functionality with advanced filtering.
 - Soft delete support
 - Custom sorting
 
-### ShowTrait
+### RetrievalTrait
 
 Retrieve a single record with optional relationships and custom processing.
 
 ```php
 public function show($id)
 {
-    return $this->showInit($id, function ($item) {
+    return $this->retrievalInit($id, function ($item) {
         $item->load(['category', 'tags']);
         return [$item];
     });
 }
 ```
 
-### EditTrait
+### EditFormTrait
 
 Retrieve data for editing, including the record and any necessary form data.
 
 ```php
 public function edit($id)
 {
-    return $this->editInit($id, function ($item) {
+    return $this->editFormInit($id, function ($item) {
         $item->load(['category']);
         return [$item];
     });
 }
 ```
 
-### DestroyTrait
+### DeletionTrait
 
 Delete records with support for both soft deletes and force deletion.
 
 ```php
 public function destroy($id)
 {
-    return $this->destroyInit($id, function ($item) {
+    return $this->deletionInit($id, function ($item) {
         // Custom logic before deletion
         if ($item->orders_count > 0) {
             return [false, $this->sendResponse(false, [], 'Cannot delete product with orders')];
@@ -216,14 +216,14 @@ public function destroy($id)
 }
 ```
 
-### ToggleActiveTrait
+### StatusToggleTrait
 
 Toggle active/inactive status of records using soft deletes or status columns.
 
 ```php
-public function toggleActive($id, $state)
+public function toggleStatus($id, $state)
 {
-    return $this->toggleActiveInit($id, $state);
+    return $this->statusToggleInit($id, $state);
 }
 ```
 

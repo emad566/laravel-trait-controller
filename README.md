@@ -21,7 +21,7 @@ A Laravel package that provides reusable controller traits for common CRUD opera
 Install the package via Composer:
 
 ```bash
-composer require emadsoliman/laravel-trait-controller
+composer require emad566/laravel-trait-controller
 ```
 
 ### Laravel Auto-Discovery
@@ -33,7 +33,7 @@ For older versions, manually add the service provider to your `config/app.php`:
 ```php
 'providers' => [
     // Other service providers...
-    EmadSoliman\LaravelTraitController\LaravelTraitControllerServiceProvider::class,
+    Emad566\LaravelTraitController\LaravelTraitControllerServiceProvider::class,
 ],
 ```
 
@@ -54,12 +54,12 @@ php artisan vendor:publish --tag=trait-controller-config
 
 namespace App\Http\Controllers;
 
-use EmadSoliman\LaravelTraitController\Controllers\BaseController;
-use EmadSoliman\LaravelTraitController\Traits\ListingTrait;
-use EmadSoliman\LaravelTraitController\Traits\RetrievalTrait;
-use EmadSoliman\LaravelTraitController\Traits\EditFormTrait;
-use EmadSoliman\LaravelTraitController\Traits\DeletionTrait;
-use EmadSoliman\LaravelTraitController\Traits\StatusToggleTrait;
+use Emad566\LaravelTraitController\Controllers\BaseController;
+use Emad566\LaravelTraitController\Traits\ListingTrait;
+use Emad566\LaravelTraitController\Traits\RetrievalTrait;
+use Emad566\LaravelTraitController\Traits\EditFormTrait;
+use Emad566\LaravelTraitController\Traits\DeletionTrait;
+use Emad566\LaravelTraitController\Traits\StatusToggleTrait;
 
 class ProductController extends BaseController
 {
@@ -325,7 +325,7 @@ The package includes a comprehensive `BaseFormRequest` class with built-in secur
 The `FilterRequest` extends `BaseFormRequest` with comprehensive filtering capabilities for your listing endpoints:
 
 ```php
-use EmadSoliman\LaravelTraitController\Http\Requests\FilterRequest;
+use Emad566\LaravelTraitController\Http\Requests\FilterRequest;
 
 public function index(FilterRequest $request)
 {
@@ -379,7 +379,7 @@ Extend the base controller to add your own methods:
 
 namespace App\Http\Controllers;
 
-use EmadSoliman\LaravelTraitController\Controllers\BaseController as TraitBaseController;
+use Emad566\LaravelTraitController\Controllers\BaseController as TraitBaseController;
 
 class BaseController extends TraitBaseController
 {
@@ -474,7 +474,7 @@ If you discover any security-related issues, please open an issue on GitHub inst
 
 ## Credits
 
-- [Emad Soliman](https://github.com/emadsoliman)
+- [Emad Soliman](https://github.com/emad566)
 - [All Contributors](../../contributors)
 
 ## License

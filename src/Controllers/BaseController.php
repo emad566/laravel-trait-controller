@@ -1,12 +1,12 @@
 <?php
 
-namespace EmadSoliman\LaravelTraitController\Controllers;
+namespace Emad566\LaravelTraitController\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
-use EmadSoliman\LaravelTraitController\Services\FailedValidation;
+use Emad566\LaravelTraitController\Services\FailedValidation;
 
 abstract class BaseController extends Controller
 {

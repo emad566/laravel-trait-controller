@@ -1,6 +1,6 @@
 <?php
 
-namespace EmadSoliman\LaravelTraitController\Services;
+namespace Emad566\LaravelTraitController\Services;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\JsonResponse;

@@ -1,13 +1,13 @@
 <?php
 
-namespace EmadSoliman\LaravelTraitController\Traits;
+namespace Emad566\LaravelTraitController\Traits;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use EmadSoliman\LaravelTraitController\Helpers\CustomLogger;
+use Emad566\LaravelTraitController\Helpers\CustomLogger;
 
 trait ListingTrait
 {

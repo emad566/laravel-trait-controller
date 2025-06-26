@@ -13,15 +13,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use EmadSoliman\LaravelTraitController\Controllers\BaseController;
-use EmadSoliman\LaravelTraitController\Traits\ListingTrait;
-use EmadSoliman\LaravelTraitController\Traits\RetrievalTrait;
-use EmadSoliman\LaravelTraitController\Traits\EditFormTrait;
-use EmadSoliman\LaravelTraitController\Traits\DeletionTrait;
-use EmadSoliman\LaravelTraitController\Traits\StatusToggleTrait;
-use EmadSoliman\LaravelTraitController\Http\Requests\BaseFormRequest;
-use EmadSoliman\LaravelTraitController\Http\Requests\FilterRequest;
-use EmadSoliman\LaravelTraitController\Helpers\CustomLogger;
+use Emad566\LaravelTraitController\Controllers\BaseController;
+use Emad566\LaravelTraitController\Traits\ListingTrait;
+use Emad566\LaravelTraitController\Traits\RetrievalTrait;
+use Emad566\LaravelTraitController\Traits\EditFormTrait;
+use Emad566\LaravelTraitController\Traits\DeletionTrait;
+use Emad566\LaravelTraitController\Traits\StatusToggleTrait;
+use Emad566\LaravelTraitController\Http\Requests\BaseFormRequest;
+use Emad566\LaravelTraitController\Http\Requests\FilterRequest;
+use Emad566\LaravelTraitController\Helpers\CustomLogger;
 
 // NOTE: Replace with your actual model imports
 // use App\Models\Product;

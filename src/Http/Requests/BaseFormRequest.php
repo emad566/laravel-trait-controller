@@ -1,6 +1,6 @@
 <?php
 
-namespace EmadSoliman\LaravelTraitController\Http\Requests;
+namespace Emad566\LaravelTraitController\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;

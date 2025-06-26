@@ -1,5 +1,5 @@
 {
-    "name": "emadsoliman/laravel-trait-controller",
+    "name": "emad566/laravel-trait-controller",
     "description": "A Laravel package that provides reusable controller traits for common CRUD operations with advanced filtering, soft deletes, caching, and validation.",
     "type": "library",
     "license": "MIT",
@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EmadSoliman\\LaravelTraitController\\": "src/"
+            "Emad566\\LaravelTraitController\\": "src/"
         },
         "files": [
             "src/helpers.php"
@@ -40,9 +40,9 @@
 
     "extra": {
         "laravel": {
-            "providers": [
-                "EmadSoliman\\LaravelTraitController\\LaravelTraitControllerServiceProvider"
-            ]
+                    "providers": [
+            "Emad566\\LaravelTraitController\\LaravelTraitControllerServiceProvider"
+        ]
         }
     },
     "minimum-stability": "stable",

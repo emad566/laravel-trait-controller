@@ -1,6 +1,6 @@
 <?php
 
-namespace EmadSoliman\LaravelTraitController;
+namespace Emad566\LaravelTraitController;
 
 use Illuminate\Support\ServiceProvider;
 

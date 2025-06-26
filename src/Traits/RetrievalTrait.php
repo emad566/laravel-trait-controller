@@ -1,10 +1,10 @@
 <?php
 
-namespace EmadSoliman\LaravelTraitController\Traits;
+namespace Emad566\LaravelTraitController\Traits;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use EmadSoliman\LaravelTraitController\Helpers\CustomLogger;
+use Emad566\LaravelTraitController\Helpers\CustomLogger;
 
 trait RetrievalTrait
 {

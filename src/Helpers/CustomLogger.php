@@ -1,6 +1,6 @@
 <?php
 
-namespace EmadSoliman\LaravelTraitController\Helpers;
+namespace Emad566\LaravelTraitController\Helpers;
 
 use Illuminate\Support\Facades\Log;
 

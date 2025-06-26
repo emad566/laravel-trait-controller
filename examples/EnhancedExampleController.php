@@ -10,6 +10,8 @@ use EmadSoliman\LaravelTraitController\Traits\EditFormTrait;
 use EmadSoliman\LaravelTraitController\Traits\DeletionTrait;
 use EmadSoliman\LaravelTraitController\Traits\StatusToggleTrait;
 use EmadSoliman\LaravelTraitController\Http\Requests\BaseFormRequest;
+use EmadSoliman\LaravelTraitController\Http\Requests\FilterRequest;
+use EmadSoliman\LaravelTraitController\Helpers\CustomLogger;
 use App\Models\Product;
 
 /**
@@ -25,6 +27,52 @@ class EnhancedExampleController extends BaseController
         // Auto-configure the controller for the Product model
         // Exclude sensitive fields from filtering
         parent::__construct(Product::class, ['internal_notes', 'cost_price']);
+    }
+
+    /**
+     * Advanced product listing with comprehensive FilterRequest validation
+     */
+    public function indexWithFilterRequest(FilterRequest $request)
+    {
+        return $this->listingInit(
+            $request,
+            // FilterRequest automatically handles validation, just add business logic
+            function ($query) use ($request) {
+                CustomLogger::info('product-filters.log', 'Using FilterRequest for advanced filtering', [
+                    'filters_applied' => 'FilterRequest handles comprehensive validation',
+                    'timestamp' => date('Y-m-d H:i:s'),
+                ]);
+
+                // Business-specific logic can be added here
+                // FilterRequest already handles most common filtering patterns
+
+                return [$query];
+            },
+            // No additional validations needed - FilterRequest handles comprehensive validation
+            [],
+            // Include soft deleted based on permissions
+            should_include_trashed(),
+            // After retrieval callback
+            function ($items) {
+                CustomLogger::info('product-results.log', 'Products retrieved with FilterRequest', [
+                    'count' => $items->count(),
+                    'total' => $items->total(),
+                ]);
+                return [$items];
+            },
+            // Helper data
+            [
+                'filter_info' => 'Using FilterRequest for comprehensive validation and filtering'
+            ],
+            // Eager load relationships
+            ['category', 'brand'],
+            // Load after pagination
+            ['reviews'],
+            // Enable global search
+            true,
+            // Custom timestamp column
+            'created_at'
+        );
     }
 
     /**

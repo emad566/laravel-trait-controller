@@ -308,6 +308,49 @@ The package includes comprehensive error handling:
 }
 ```
 
+## Request Classes
+
+### BaseFormRequest
+
+The package includes a comprehensive `BaseFormRequest` class with built-in security features:
+
+- **XSS Prevention**: Automatic sanitization of HTML content
+- **SQL Injection Protection**: Custom validation rules to prevent SQL injection
+- **Path Traversal Prevention**: Protection against directory traversal attacks
+- **Input Sanitization**: Automatic trimming and cleaning of inputs
+- **Enhanced Error Responses**: Structured error responses with input masking for sensitive data
+
+### FilterRequest
+
+The `FilterRequest` extends `BaseFormRequest` with comprehensive filtering capabilities for your listing endpoints:
+
+```php
+use EmadSoliman\LaravelTraitController\Http\Requests\FilterRequest;
+
+public function index(FilterRequest $request)
+{
+    return $this->listingInit($request);
+}
+```
+
+**Features:**
+- **Pagination**: `page`, `per_page` with limits
+- **Sorting**: Single or multi-column sorting with `sortColumn`, `sortDirection`, `sort_columns`, `sort_directions`
+- **Date Filtering**: Date ranges, predefined periods (`created_today`, `created_this_week`, etc.)
+- **Text Search**: Global search with `q`, specific field search with `name`, `search_columns`
+- **Advanced Filtering**: Custom filters with `filters`, `ranges`, `relationships`
+- **Include Options**: Laravel API resource-style includes with `include`
+- **Category/Product/User Filtering**: Pre-built filtering for common entities
+- **Price Filtering**: Range filtering with `min_price`, `max_price`, `price_range`
+- **Security**: All inputs are validated and sanitized automatically
+
+**Usage Example:**
+```php
+// GET /products?page=1&per_page=20&q=laptop&category_ids[]=1&category_ids[]=2
+// &min_price=100&max_price=500&sort_columns[]=name&sort_directions[]=ASC
+// &created_today=true&include=category,reviews
+```
+
 ## Helper Functions
 
 The package provides several helper functions you can override in your application:

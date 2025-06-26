@@ -1,18 +1,20 @@
 # Laravel Trait Controller
 
-A Laravel package that provides reusable controller traits for common CRUD operations with advanced filtering, soft deletes, caching support, and validation. This package eliminates repetitive controller code and provides a consistent API structure across your Laravel applications.
+A Laravel package that provides reusable controller traits for common CRUD operations with advanced filtering, soft deletes, security features, and validation. This package eliminates repetitive controller code and provides a consistent API structure across your Laravel applications.
 
 ## Features
 
-- 🚀 **Ready-to-use CRUD operations** - Index, Show, Edit, Destroy, and Toggle Active
-- 🔍 **Advanced filtering** - Column-based filtering, date ranges, and search functionality  
-- 📄 **Automatic pagination** - Configurable pagination with validation
-- 🗑️ **Soft delete support** - Seamlessly handles models with or without soft deletes
-- ✅ **Built-in validation** - Automatic validation with customizable rules
-- 🎯 **Callback support** - Hooks for custom business logic at any stage
-- ⚡ **Performance optimized** - Query builder macros and eager loading support
-- 🎛️ **Highly configurable** - Extensive configuration options
-- 📊 **Consistent responses** - Standardized JSON API responses
+- 🚀 **Enhanced CRUD operations** - ListingTrait, RetrievalTrait, EditFormTrait, DeletionTrait, and StatusToggleTrait
+- 🔍 **Advanced filtering** - Multi-column sorting, range filtering, relationship filtering, and include options
+- 📄 **Smart pagination** - Configurable pagination with metadata and validation
+- 🗑️ **Intelligent soft delete support** - Seamlessly handles models with or without soft deletes
+- ✅ **Comprehensive validation** - Built-in security validation with XSS and SQL injection prevention
+- 🎯 **Flexible callback system** - Hooks for custom business logic at any stage
+- ⚡ **Performance optimized** - Query builder macros, eager loading, and advanced caching
+- 🛡️ **Security focused** - Input sanitization, validation, and audit logging
+- 🎛️ **Highly configurable** - Extensive configuration with environment-based settings
+- 📊 **Rich API responses** - Standardized JSON responses with metadata and debugging info
+- 📝 **Audit logging** - Built-in logging for operations and errors
 
 ## Installation
 
@@ -53,15 +55,15 @@ php artisan vendor:publish --tag=trait-controller-config
 namespace App\Http\Controllers;
 
 use EmadSoliman\LaravelTraitController\Controllers\BaseController;
-use EmadSoliman\LaravelTraitController\Traits\IndexTrait;
-use EmadSoliman\LaravelTraitController\Traits\ShowTrait;
-use EmadSoliman\LaravelTraitController\Traits\EditTrait;
-use EmadSoliman\LaravelTraitController\Traits\DestroyTrait;
-use EmadSoliman\LaravelTraitController\Traits\ToggleActiveTrait;
+use EmadSoliman\LaravelTraitController\Traits\ListingTrait;
+use EmadSoliman\LaravelTraitController\Traits\RetrievalTrait;
+use EmadSoliman\LaravelTraitController\Traits\EditFormTrait;
+use EmadSoliman\LaravelTraitController\Traits\DeletionTrait;
+use EmadSoliman\LaravelTraitController\Traits\StatusToggleTrait;
 
 class ProductController extends BaseController
 {
-    use IndexTrait, ShowTrait, EditTrait, DestroyTrait, ToggleActiveTrait;
+    use ListingTrait, RetrievalTrait, EditFormTrait, DeletionTrait, StatusToggleTrait;
 
     public function __construct()
     {
@@ -70,27 +72,27 @@ class ProductController extends BaseController
 
     public function index(Request $request)
     {
-        return $this->indexInit($request);
+        return $this->listingInit($request);
     }
 
     public function show($id)
     {
-        return $this->showInit($id);
+        return $this->retrievalInit($id);
     }
 
     public function edit($id)
     {
-        return $this->editInit($id);
+        return $this->editFormInit($id);
     }
 
     public function destroy($id)
     {
-        return $this->destroyInit($id);
+        return $this->deletionInit($id);
     }
 
-    public function toggleActive($id, $state)
+    public function toggleStatus($id, $state)
     {
-        return $this->toggleActiveInit($id, $state);
+        return $this->statusToggleInit($id, $state);
     }
 }
 ```
@@ -100,7 +102,7 @@ class ProductController extends BaseController
 ```php
 public function index(Request $request)
 {
-    return $this->indexInit(
+    return $this->listingInit(
         $request,
         // Before filtering callback
         function ($query) use ($request) {
@@ -123,7 +125,22 @@ public function index(Request $request)
         // Eager load relationships
         ['category', 'tags'],
         // Load additional relationships after pagination
-        ['reviews']
+        ['reviews'],
+        // Enable global search
+        true,
+        // Timestamp column for date filtering
+        'created_at',
+        // Include options (like Laravel API resources)
+        [
+            'reviews' => [
+                'with' => 'reviews.user',
+                'callback' => function ($query, $request) {
+                    return $query->whereHas('reviews', function ($q) {
+                        $q->where('approved', true);
+                    });
+                }
+            ]
+        ]
     );
 }
 ```

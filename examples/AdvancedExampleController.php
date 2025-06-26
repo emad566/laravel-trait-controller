@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * EXAMPLE CONTROLLER - FOR REFERENCE ONLY
+ *
+ * This is an example controller demonstrating how to use the Laravel Trait Controller package.
+ * Copy this file to your Laravel application and modify it according to your needs.
+ *
+ * Note: This file references models (Product, Category, Brand, etc.) that don't exist in the package.
+ * You should replace these with your actual model references when implementing in your application.
+ */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -12,21 +22,33 @@ use EmadSoliman\LaravelTraitController\Traits\StatusToggleTrait;
 use EmadSoliman\LaravelTraitController\Http\Requests\BaseFormRequest;
 use EmadSoliman\LaravelTraitController\Http\Requests\FilterRequest;
 use EmadSoliman\LaravelTraitController\Helpers\CustomLogger;
-use App\Models\Product;
+
+// NOTE: Replace with your actual model imports
+// use App\Models\Product;
+// use App\Models\Category;
+// use App\Models\Brand;
+// use App\Models\Tag;
 
 /**
- * Enhanced Product Controller demonstrating the advanced features
- * of the Laravel Trait Controller package with improved naming
+ * Advanced Product Controller demonstrating complex features
+ * of the Laravel Trait Controller package (FOR REFERENCE ONLY)
+ *
+ * This example includes business logic, relationships, and advanced filtering.
+ * Copy and modify according to your application's needs.
  */
-class EnhancedExampleController extends BaseController
+class AdvancedExampleController extends BaseController
 {
     use ListingTrait, RetrievalTrait, EditFormTrait, DeletionTrait, StatusToggleTrait;
 
     public function __construct()
     {
-        // Auto-configure the controller for the Product model
+        // Auto-configure the controller for your model
+        // Replace 'Product::class' with your actual model class
         // Exclude sensitive fields from filtering
-        parent::__construct(Product::class, ['internal_notes', 'cost_price']);
+        // parent::__construct(Product::class, ['internal_notes', 'cost_price']);
+
+        // Example for when you implement this in your application:
+        // parent::__construct(\App\Models\Product::class, ['internal_notes', 'cost_price']);
     }
 
     /**
@@ -118,10 +140,10 @@ class EnhancedExampleController extends BaseController
                 // Add computed fields or modify collection
                 return [$items];
             },
-            // Helper data for frontend
+            // Helper data for frontend (replace with your actual models)
             [
-                'categories' => \App\Models\Category::all(),
-                'brands' => \App\Models\Brand::all(),
+                // 'categories' => Category::all(), // Uncomment and use your models
+                // 'brands' => Brand::all(),       // Uncomment and use your models
                 'price_ranges' => [
                     ['min' => 0, 'max' => 50, 'label' => 'Under $50'],
                     ['min' => 50, 'max' => 100, 'label' => '$50 - $100'],
@@ -184,10 +206,10 @@ class EnhancedExampleController extends BaseController
     public function create()
     {
         return $this->sendResponse(true, [
-            'categories' => \App\Models\Category::where('active', true)->get(),
-            'brands' => \App\Models\Brand::where('active', true)->get(),
-            'tags' => \App\Models\Tag::all(),
-            'tax_rates' => config('shop.tax_rates'),
+            // 'categories' => Category::where('active', true)->get(), // Uncomment and use your models
+            // 'brands' => Brand::where('active', true)->get(),       // Uncomment and use your models
+            // 'tags' => Tag::all(),                                  // Uncomment and use your models
+            // 'tax_rates' => config('shop.tax_rates'),              // Configure your tax rates
         ], 'Create form data retrieved');
     }
 
@@ -196,6 +218,8 @@ class EnhancedExampleController extends BaseController
      */
     public function store(BaseFormRequest $request)
     {
+        // Example implementation - replace with your actual model logic
+        /*
         try {
             $product = Product::create($request->validated());
 
@@ -211,6 +235,9 @@ class EnhancedExampleController extends BaseController
         } catch (\Throwable $th) {
             return $this->sendServerError('Error creating product', null, $th);
         }
+        */
+
+        return $this->sendResponse(true, [], 'Example store method - implement with your model');
     }
 
     /**
@@ -218,6 +245,8 @@ class EnhancedExampleController extends BaseController
      */
     public function update(BaseFormRequest $request, $id)
     {
+        // Example implementation - replace with your actual model logic
+        /*
         try {
             $product = Product::findOrFail($id);
             $product->update($request->validated());
@@ -234,6 +263,9 @@ class EnhancedExampleController extends BaseController
         } catch (\Throwable $th) {
             return $this->sendServerError('Error updating product', null, $th);
         }
+        */
+
+        return $this->sendResponse(true, [], 'Example update method - implement with your model');
     }
 
     /**

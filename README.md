@@ -456,12 +456,6 @@ class ProductResource extends JsonResource
 }
 ```
 
-## Testing
-
-```bash
-vendor/bin/phpunit
-```
-
 ## Contributing
 
 1. Fork the repository
@@ -476,7 +470,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Security
 
-If you discover any security-related issues, please email emadsoliman@example.com instead of using the issue tracker.
+If you discover any security-related issues, please open an issue on GitHub instead of using public discussions.
 
 ## Credits
 
@@ -498,4 +492,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 If you find this package useful, please consider giving it a ⭐ on GitHub!
 
-For support, please open an issue on GitHub or contact emadsoliman@example.com. 
+For support, please open an issue on GitHub. 

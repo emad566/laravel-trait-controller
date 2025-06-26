@@ -5,8 +5,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Emad Soliman",
-            "email": "emadsoliman@example.com"
+            "name": "Emad Soliman"
         }
     ],
     "keywords": [
@@ -29,8 +28,6 @@
         "illuminate/validation": "^10.0|^11.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.0",
-        "orchestra/testbench": "^8.0|^9.0"
     },
     "autoload": {
         "psr-4": {
@@ -40,11 +37,7 @@
             "src/helpers.php"
         ]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "EmadSoliman\\LaravelTraitController\\Tests\\": "tests/"
-        }
-    },
+
     "extra": {
         "laravel": {
             "providers": [

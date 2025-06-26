@@ -7,8 +7,7 @@ package-lock.json
 .DS_Store
 Thumbs.db
 *.log
-/tests/coverage/
-.phpunit.result.cache
+
 .idea/
 .vscode/
 *.swp
